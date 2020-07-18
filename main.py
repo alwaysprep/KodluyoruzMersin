@@ -45,8 +45,16 @@ def anasayfa():
 	message = ''
 	if request.method == "POST":
 		image = request.files.get('image')
-		if image_has_pet(image):
-			image.save(f'assets/images/{image.filename}')
+		read_image = image.read()
+		if image_has_pet(read_image):
+
+			dosya = open(f'assets/images/{image.filename}', 'wb')
+			dosya.write(read_image)
+			dosya.close()
+
+			# image.save(f'assets/images/{image.filename}')
+
+
 		else:
 			message = 'Ev Hayvanı Dışında Fotoğraf Paylaşamazsınız!'
 
