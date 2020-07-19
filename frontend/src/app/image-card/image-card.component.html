@@ -1,0 +1,7 @@
+<img (dblclick)="like()" class="rounded mx-auto d-block" width="400" height="500" src="{{ image }}"><br>
+<i [ngClass]="
+    {
+        'fa-heart': liked,
+        'fa-heart-o': !liked
+    }" class="fa fa-2x" aria-hidden="true">
+</i>

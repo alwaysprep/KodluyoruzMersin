@@ -1,5 +1,5 @@
-<div *ngFor="let image of images" class="text-center">
+<div *ngFor="let image_url of images" class="text-center">
 
-    <img class="rounded mx-auto d-block" width="400" height="500" src="{{ image }}"><br>
+    <image-card [image]="image_url"></image-card>
 
 </div>
