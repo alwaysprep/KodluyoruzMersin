@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'frontend';
+  title = 'hello there';
+  images = [
+    'http://localhost:5000/assets/images/kopek.jpg',
+    'http://localhost:5000/assets/images/Scarlet_Macaw.jpg'
+  ];
 }

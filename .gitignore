@@ -1,5 +1,6 @@
 .DS_Store
 
-assets/images/*
+backend/assets/images/*
 !.gitignore
 
+__pycache__
