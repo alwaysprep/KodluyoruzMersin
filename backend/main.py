@@ -23,9 +23,4 @@ def anasayfa():
     return {'status': 'Ok'}
 
 
-@app.route('/get_images_list', methods=["GET"])
-def get_images():
-    return jsonify(glob.glob('assets/images/*.jpg'))
-
-
 app.run()

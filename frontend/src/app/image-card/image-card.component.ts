@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+
 
 @Component({
   selector: 'image-card',
@@ -7,17 +9,23 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ImageCardComponent implements OnInit {
 
+  @Input() id = '';
   @Input() image = '';
+  @Input() liked = false;
+  @Input() description = '';
 
-  liked = false;
+  imageDoc;
 
-  constructor() { }
+  constructor(private afs: AngularFirestore) { }
 
   ngOnInit(): void {
+    this.imageDoc = this.afs.doc('/images/' + this.id);
   }
 
   like() {
     this.liked = !this.liked;
+    this.imageDoc.update({ 'like': this.liked });
+
   }
 
 }

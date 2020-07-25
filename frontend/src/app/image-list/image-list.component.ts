@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'image-list',
@@ -8,12 +9,21 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ImageListComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private firestore: AngularFirestore
+  ) { }
 
   images;
 
   ngOnInit(): void {
-    this.images = this.http.get('http://localhost:5000/get_images_list');
+    this.images = this.firestore.collection('images').snapshotChanges()
+      .pipe(
+        map(actions => actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        }))
+      );
   }
 
 
