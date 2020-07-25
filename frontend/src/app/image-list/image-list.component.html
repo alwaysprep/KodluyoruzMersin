@@ -1,5 +1,5 @@
-<div *ngFor="let image_url of images" class="text-center">
+<div *ngFor="let image_url of images | async" class="text-center">
 
-    <image-card [image]="image_url"></image-card>
+    <image-card [image]="'http://localhost:5000/' + image_url"></image-card>
 
 </div>

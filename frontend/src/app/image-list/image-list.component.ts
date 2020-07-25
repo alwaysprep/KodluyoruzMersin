@@ -10,19 +10,11 @@ export class ImageListComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
 
-  images = [
-    'http://localhost:5000/assets/images/kopek.jpg',
-    'http://localhost:5000/assets/images/Scarlet_Macaw.jpg'
-  ];
+  images;
 
   ngOnInit(): void {
-    this.http.get('http://localhost:5000/get_images_list')
-      .subscribe(this.printResults);
+    this.images = this.http.get('http://localhost:5000/get_images_list');
   }
 
-  printResults(data) {
-    this.images = data;
-    console.log(this.images);
-  }
 
 }

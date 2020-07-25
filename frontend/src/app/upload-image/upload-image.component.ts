@@ -23,7 +23,18 @@ export class UploadImageComponent implements OnInit {
     const uploadData = new FormData();
     uploadData.append('image', this.selectedFile);
     this.http.post('http://localhost:5000/', uploadData)
-      .subscribe();
+      .subscribe(
+        this.printResult,
+        this.printErrors
+      );
+  }
+
+  printResult(res) {
+    console.log(res)
+  }
+
+  printErrors(err) {
+    alert(err['error']['error'])
   }
 
 }
