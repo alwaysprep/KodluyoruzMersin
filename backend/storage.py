@@ -11,7 +11,6 @@ bucket = storage.bucket("petstories.appspot.com")
 
 
 def save_image(image, read_image):
-    print(image.content_type)
     blob = bucket.blob(f'assets/images/{image.filename}')
     blob.upload_from_string(read_image, content_type=image.content_type)
 

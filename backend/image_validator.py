@@ -6,8 +6,6 @@ pets = ['Cat', 'Bird', 'Dog']
 
 
 def image_has_pet(content):
-    return True
-
     client = vision.ImageAnnotatorClient()
 
     image = types.Image(content=content)
