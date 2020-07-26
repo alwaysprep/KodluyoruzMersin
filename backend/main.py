@@ -1,12 +1,10 @@
-import glob
-
-from flask import Flask, request, jsonify
+from flask import Flask, request
 from flask_cors import CORS
 
 from image_validator import image_has_pet
 from storage import save_image
 
-app = Flask(__name__, static_folder='assets')
+app = Flask(__name__)
 CORS(app)
 
 
